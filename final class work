@@ -1,0 +1,37 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Maria\\Desktop\\אוטומציה\\chromedriver.exe");
+
+WebDriver driver = new ChromeDriver();
+driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//this line configs the implicit limit timeout
+driver.manage().window().maximize();
+
+driver.get("https://practice.automationtesting.in//");
+
+        WebElement myAccountlink = driver.findElement(By.cssSelector("#menu-item-50 > a"));
+myAccountlink.click();
+
+        WebElement emailTextBox = driver.findElement(By.id("reg_email"));
+        emailTextBox.sendKeys("rav43e@mary.com");
+
+        WebElement passwordTextBox = driver.findElement(By.id("reg_password"));
+        passwordTextBox.sendKeys("maria56247896324ytfvbhyg765//-");
+
+        WebElement sButton = driver.findElement(By.cssSelector("#customer_login > div.u-column2.col-2 > form > p.woocomerce-FormRow.form-row > input.woocommerce-Button.button"));
+        sButton.click();
+
+        WebElement Hilable = driver.findElement(By.cssSelector("#page-36 > div > div.woocommerce > div > p:nth-child(1)"));
+        System.out.println(Hilable.getText());
+
+          driver.quit();
+
+    }
+}
