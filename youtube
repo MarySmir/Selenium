@@ -1,0 +1,48 @@
+package Selenium.pom;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
+
+public class Mariastor {
+
+    String path;
+    WebDriver driver;
+
+    //constructor
+    public Mariastor(String path, String s) {
+
+        this.path= path;
+        setPrep();
+    }
+
+    public void setPrep() {
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Maria\\Desktop\\אוטומציה\\chromedriver.exe");
+
+        this.driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+
+
+    }
+
+
+    public String openPage (String url){
+
+        this.driver.get(url);
+        return this.driver.getCurrentUrl();
+    }
+
+    }
+package Selenium.pom;
+
+public class Main2 {
+    public static void main(String[] args) {
+        Mariastor store = new Mariastor("webdriver.chrome.driver","C:\\Users\\Maria\\Desktop\\אוטומציה\\chromedriver.exe");
+        String actualLink = "https://www.youtube.com";
+        String actualYoutubeLink = store.openPage(actualLink);
+        
+    }
+}
+
